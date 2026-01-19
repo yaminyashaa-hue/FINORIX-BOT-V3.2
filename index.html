@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINORIX BOT V3.2 | QUOTEX PREMIUM</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="trading-bg-container">
+        <canvas id="tradingCanvas"></canvas>
+    </div>
+
+    <div id="login-box" class="main-wrapper">
+        <div class="top-status-bar">
+            <div class="dots-container">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="live-status">SECURE TERMINAL</div>
+        </div>
+        <div class="container">
+            <h2 class="neon-title shine-effect">USER LOGIN</h2>
+            <p class="exclusive-tag">EXCLUSIVE FOR QUOTEX PLATFORM</p>
+            <div class="input-section">
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password" style="margin-top: 12px;">
+            </div>
+            <button class="premium-btn shine-effect" onclick="checkLogin()">CONNECT TO SERVER</button>
+            <p class="dev-credit-login">Developed by SYS SOFTWARE LTD.</p>
+            <div id="login-error" class="error-msg" style="display: none;">
+                <p>INVALID USERNAME OR PASSWORD!</p>
+                <p>CONTACT ADMIN: <a href="https://t.me/YaminSabbir" target="_blank">@YaminSabbir</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-box" class="main-wrapper" style="display: none;">
+        <div class="container">
+            <div class="loader-circle"></div>
+            <p class="scanning-text">CONNECTING TO MAIN SERVER...</p>
+            <p id="loading-status" style="font-size: 10px; color: #555; margin-top: 10px;">ESTABLISHING ENCRYPTED LINK...</p>
+        </div>
+    </div>
+
+    <div id="main-content" class="main-wrapper" style="display: none;">
+        <div class="top-status-bar">
+            <div class="dots-container">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="live-status live-blink">
+                <span class="pulse-icon"></span> LIVE ANALYSIS RUNNING...
+            </div>
+        </div>
+
+        <div class="container">
+            <h1 class="neon-title shine-effect">FINORIX BOT V3.2</h1>
+            <p class="dev-credit">Developed by SYS SOFTWARE LTD.</p>
+            
+            <div class="input-section">
+                <label>CHOOSE ASSET MARKET</label>
+                <select id="marketSelect" onchange="checkSelection()">
+                    <option value="">-- SELECT MARKET --</option>
+                    <option value="ALL" style="color: #ff4d4d; font-weight: bold;">ALL MARKETS (AUTO) [RECOMMENDED]</option>
+                    <option value="AUD/NZD (OTC)">AUD/NZD (OTC)</option>
+                    <option value="NZD/CHF (OTC)">NZD/CHF (OTC)</option>
+                    <option value="USD/ARS (OTC)">USD/ARS (OTC)</option>
+                    <option value="GBP/NZD (OTC)">GBP/NZD (OTC)</option>
+                    <option value="USD/COP (OTC)">USD/COP (OTC)</option>
+                    <option value="USD/ZAR (OTC)">USD/ZAR (OTC)</option>
+                    <option value="USD/INR (OTC)">USD/INR (OTC)</option>
+                    <option value="USD/NGN (OTC)">USD/NGN (OTC)</option>
+                    <option value="USD/PKR (OTC)">USD/PKR (OTC)</option>
+                    <option value="CAD/CHF (OTC)">CAD/CHF (OTC)</option>
+                    <option value="USD/BDT (OTC)">USD/BDT (OTC)</option>
+                    <option value="USD/MXN (OTC)">USD/MXN (OTC)</option>
+                    <option value="USD/TRY (OTC)">USD/TRY (OTC)</option>
+                    <option value="USD/EGP (OTC)">USD/EGP (OTC)</option>
+                    <option value="USD/PHP (OTC)">USD/PHP (OTC)</option>
+                    <option value="EUR/NZD (OTC)">EUR/NZD (OTC)</option>
+                    <option value="NZD/USD (OTC)">NZD/USD (OTC)</option>
+                    <option value="USD/IDR (OTC)">USD/IDR (OTC)</option>
+                    <option value="NZD/CAD (OTC)">NZD/CAD (OTC)</option>
+                    <option value="NZD/JPY (OTC)">NZD/JPY (OTC)</option>
+                    <option value="USD/BRL (OTC)">USD/BRL (OTC)</option>
+                    <option value="USD/DZD (OTC)">USD/DZD (OTC)</option>
+                </select>
+            </div>
+
+            <button id="genBtn" class="premium-btn shine-effect" disabled onclick="startAnalysis()">GENERATE SIGNAL</button>
+
+            <div id="result-box">
+                <div id="analysis-section" style="display:none;">
+                    <div class="loader-circle"></div>
+                    <p class="scanning-text">DECODING MARKET TRENDS...</p>
+                    <div id="market-popup" class="popup-market"></div>
+                </div>
+                <div id="signalDisplay" style="display:none;">
+                    <div class="signal-card">
+                        <p id="signalOutput"></p>
+                        <div id="directionText" class="direction"></div>
+                        <p class="martingale-hint">* IF LOSS, USE 1-STEP MARTINGALE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
